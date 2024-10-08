@@ -1,0 +1,17 @@
+{
+	"name": "sqlscript3",
+	"properties": {
+		"content": {
+			"query": "-- testing 2\n\n--changed here",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
