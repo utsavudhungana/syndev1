@@ -1,0 +1,17 @@
+{
+	"name": "test_sql_script",
+	"properties": {
+		"content": {
+			"query": "---this is test script",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
