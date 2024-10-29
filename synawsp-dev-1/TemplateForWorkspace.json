@@ -720,15 +720,16 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "6411356c-d5ec-4b89-af1f-a9a5a7656ace"
+						"spark.autotune.trackingId": "32594e96-acd9-47e5-aee1-203b319ae495"
 					}
 				},
 				"metadata": {
 					"saveOutput": true,
-					"synapse_widget": {
-						"version": "0.1"
-					},
 					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "python"
+					},
 					"language_info": {
 						"name": "python"
 					},
@@ -744,6 +745,7 @@
 						},
 						"source": [
 							"%%pyspark\n",
+							"#testing testing\n",
 							"sc = spark.sparkContext\n",
 							"\n",
 							"\n",
@@ -756,7 +758,8 @@
 							"newdf.write.csv(\"abfss://test@synawspdev01.dfs.core.windows.net/transformed_data.csv\")\n",
 							""
 						],
-						"outputs": []
+						"outputs": [],
+						"execution_count": null
 					}
 				]
 			},
