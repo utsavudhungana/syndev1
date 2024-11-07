@@ -12,40 +12,101 @@
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synawsp-dev-1.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
 		"Copy products_properties_0_typeProperties_source": {
-			"value": ""
+			"value": {
+				"type": "DelimitedTextSource",
+				"storeSettings": {
+					"type": "HttpReadSettings",
+					"requestMethod": "GET"
+				},
+				"formatSettings": {
+					"type": "DelimitedTextReadSettings",
+					"skipLineCount": 0
+				}
+			}
 		},
 		"Copy products_properties_0_typeProperties_sink": {
-			"value": ""
+			"value": {
+				"type": "DelimitedTextSink",
+				"storeSettings": {
+					"type": "AzureBlobFSWriteSettings",
+					"copyBehavior": "MergeFiles"
+				},
+				"formatSettings": {
+					"type": "DelimitedTextWriteSettings",
+					"quoteAllText": true,
+					"fileExtension": ".txt"
+				}
+			}
 		},
 		"Copy products_properties_0_typeProperties_enableStaging": {
-			"value": ""
+			"value": false
 		},
 		"Copy products_properties_0_typeProperties_translator": {
-			"value": ""
+			"value": {
+				"type": "TabularTranslator",
+				"typeConversion": true,
+				"typeConversionSettings": {
+					"allowDataTruncation": true,
+					"treatBooleanAsNumber": false
+				}
+			}
 		},
 		"Test_Pipeline1_properties_0_typeProperties_notebook": {
-			"value": ""
+			"value": {
+				"referenceName": "Test_Notebook1",
+				"type": "NotebookReference"
+			}
 		},
 		"Test_Pipeline1_properties_0_typeProperties_snapshot": {
-			"value": ""
+			"value": true
 		},
 		"Test_Pipeline1_properties_0_typeProperties_conf": {
-			"value": ""
+			"value": {
+				"spark.dynamicAllocation.enabled": null,
+				"spark.dynamicAllocation.minExecutors": null,
+				"spark.dynamicAllocation.maxExecutors": null
+			}
 		},
 		"Test_Pipeline1_properties_0_typeProperties_numExecutors": {
-			"value": ""
+			"value": null
 		},
 		"Test_Pipeline2_properties_0_typeProperties_source": {
-			"value": ""
+			"value": {
+				"type": "DelimitedTextSource",
+				"storeSettings": {
+					"type": "AzureBlobFSReadSettings",
+					"recursive": true,
+					"enablePartitionDiscovery": false
+				},
+				"formatSettings": {
+					"type": "DelimitedTextReadSettings"
+				}
+			}
 		},
 		"Test_Pipeline2_properties_0_typeProperties_sink": {
-			"value": ""
+			"value": {
+				"type": "ParquetSink",
+				"storeSettings": {
+					"type": "AzureBlobFSWriteSettings",
+					"copyBehavior": "MergeFiles"
+				},
+				"formatSettings": {
+					"type": "ParquetWriteSettings"
+				}
+			}
 		},
 		"Test_Pipeline2_properties_0_typeProperties_enableStaging": {
-			"value": ""
+			"value": false
 		},
 		"Test_Pipeline2_properties_0_typeProperties_translator": {
-			"value": ""
+			"value": {
+				"type": "TabularTranslator",
+				"typeConversion": true,
+				"typeConversionSettings": {
+					"allowDataTruncation": true,
+					"treatBooleanAsNumber": false
+				}
+			}
 		},
 		"AutoResolveIntegrationRuntime_properties_typeProperties_computeProperties": {
 			"value": {

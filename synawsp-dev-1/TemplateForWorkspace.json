@@ -17,40 +17,113 @@
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synawsp-dev-1.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
 		"Copy products_properties_0_typeProperties_source": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": {
+				"type": "DelimitedTextSource",
+				"storeSettings": {
+					"type": "HttpReadSettings",
+					"requestMethod": "GET"
+				},
+				"formatSettings": {
+					"type": "DelimitedTextReadSettings",
+					"skipLineCount": 0
+				}
+			}
 		},
 		"Copy products_properties_0_typeProperties_sink": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": {
+				"type": "DelimitedTextSink",
+				"storeSettings": {
+					"type": "AzureBlobFSWriteSettings",
+					"copyBehavior": "MergeFiles"
+				},
+				"formatSettings": {
+					"type": "DelimitedTextWriteSettings",
+					"quoteAllText": true,
+					"fileExtension": ".txt"
+				}
+			}
 		},
 		"Copy products_properties_0_typeProperties_enableStaging": {
-			"type": "bool"
+			"type": "bool",
+			"defaultValue": false
 		},
 		"Copy products_properties_0_typeProperties_translator": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": {
+				"type": "TabularTranslator",
+				"typeConversion": true,
+				"typeConversionSettings": {
+					"allowDataTruncation": true,
+					"treatBooleanAsNumber": false
+				}
+			}
 		},
 		"Test_Pipeline1_properties_0_typeProperties_notebook": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": {
+				"referenceName": "Test_Notebook1",
+				"type": "NotebookReference"
+			}
 		},
 		"Test_Pipeline1_properties_0_typeProperties_snapshot": {
-			"type": "bool"
+			"type": "bool",
+			"defaultValue": true
 		},
 		"Test_Pipeline1_properties_0_typeProperties_conf": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": {
+				"spark.dynamicAllocation.enabled": null,
+				"spark.dynamicAllocation.minExecutors": null,
+				"spark.dynamicAllocation.maxExecutors": null
+			}
 		},
 		"Test_Pipeline1_properties_0_typeProperties_numExecutors": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": null
 		},
 		"Test_Pipeline2_properties_0_typeProperties_source": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": {
+				"type": "DelimitedTextSource",
+				"storeSettings": {
+					"type": "AzureBlobFSReadSettings",
+					"recursive": true,
+					"enablePartitionDiscovery": false
+				},
+				"formatSettings": {
+					"type": "DelimitedTextReadSettings"
+				}
+			}
 		},
 		"Test_Pipeline2_properties_0_typeProperties_sink": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": {
+				"type": "ParquetSink",
+				"storeSettings": {
+					"type": "AzureBlobFSWriteSettings",
+					"copyBehavior": "MergeFiles"
+				},
+				"formatSettings": {
+					"type": "ParquetWriteSettings"
+				}
+			}
 		},
 		"Test_Pipeline2_properties_0_typeProperties_enableStaging": {
-			"type": "bool"
+			"type": "bool",
+			"defaultValue": false
 		},
 		"Test_Pipeline2_properties_0_typeProperties_translator": {
-			"type": "object"
+			"type": "object",
+			"defaultValue": {
+				"type": "TabularTranslator",
+				"typeConversion": true,
+				"typeConversionSettings": {
+					"allowDataTruncation": true,
+					"treatBooleanAsNumber": false
+				}
+			}
 		},
 		"AutoResolveIntegrationRuntime_properties_typeProperties_computeProperties": {
 			"type": "object",
@@ -138,6 +211,12 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"xyzy": {
+						"type": "string",
+						"defaultValue": "1234"
+					}
 				},
 				"annotations": [],
 				"lastPublishTime": "2024-08-28T21:02:11Z"
@@ -719,7 +798,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "39d5320c-3a2d-41ca-a39d-b0ed8c178d54"
+						"spark.autotune.trackingId": "13521bf1-7111-48f7-b14b-74d4bb459c18"
 					}
 				},
 				"metadata": {
@@ -744,15 +823,13 @@
 						"sparkVersion": "3.4",
 						"nodeCount": 3,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": false
+						"memory": 28
 					},
 					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"#testing notebook new test"
 						],
