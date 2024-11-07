@@ -68,6 +68,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"xyzy": {
+				"type": "string",
+				"defaultValue": "1234"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2024-08-28T21:02:11Z"
 	},
