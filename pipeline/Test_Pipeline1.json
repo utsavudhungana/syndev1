@@ -19,10 +19,22 @@
 						"referenceName": "Test_Notebook1",
 						"type": "NotebookReference"
 					},
-					"snapshot": true
+					"snapshot": true,
+					"conf": {
+						"spark.dynamicAllocation.enabled": null,
+						"spark.dynamicAllocation.minExecutors": null,
+						"spark.dynamicAllocation.maxExecutors": null
+					},
+					"numExecutors": null
 				}
 			}
 		],
+		"parameters": {
+			"xyz": {
+				"type": "string",
+				"defaultValue": "123"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2024-07-10T22:43:33Z"
 	},
