@@ -11,14 +11,36 @@
 		"synawsp-dev-1-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synawsp-dev-1.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
-		"dev01storage_properties_typeProperties_url": {
-			"value": "https://synawspdev01.dfs.core.windows.net/"
+		"AutoResolveIntegrationRuntime_properties_typeProperties_computeProperties": {
+			"value": {
+				"location": "AutoResolve",
+				"dataFlowProperties": {
+					"computeType": "General",
+					"coreCount": 8,
+					"timeToLive": 0
+				}
+			}
 		},
-		"products_properties_typeProperties_url": {
-			"value": "https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/01/adventureworks/products.csv"
+		"sqlscript1_properties_content_currentConnection_databaseName": {
+			"value": ""
 		},
-		"synawsp-dev-1-WorkspaceDefaultStorage_properties_typeProperties_url": {
-			"value": "https://dlsasynapselearningsuyog.dfs.core.windows.net"
+		"sqlscript1_properties_content_currentConnection_poolName": {
+			"value": ""
+		},
+		"sqlscript3_properties_content_currentConnection_databaseName": {
+			"value": ""
+		},
+		"sqlscript3_properties_content_currentConnection_poolName": {
+			"value": ""
+		},
+		"test_sql_script_properties_content_currentConnection_databaseName": {
+			"value": ""
+		},
+		"test_sql_script_properties_content_currentConnection_poolName": {
+			"value": ""
+		},
+		"Notebook 1_properties_bigDataPool_referenceName": {
+			"value": "pool1"
 		}
 	}
 }

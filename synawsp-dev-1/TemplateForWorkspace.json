@@ -16,17 +16,38 @@
 			"metadata": "Secure string for 'connectionString' of 'synawsp-dev-1-WorkspaceDefaultSqlServer'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synawsp-dev-1.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
-		"dev01storage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://synawspdev01.dfs.core.windows.net/"
+		"AutoResolveIntegrationRuntime_properties_typeProperties_computeProperties": {
+			"type": "object",
+			"defaultValue": {
+				"location": "AutoResolve",
+				"dataFlowProperties": {
+					"computeType": "General",
+					"coreCount": 8,
+					"timeToLive": 0
+				}
+			}
 		},
-		"products_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/01/adventureworks/products.csv"
+		"sqlscript1_properties_content_currentConnection_databaseName": {
+			"type": "string"
 		},
-		"synawsp-dev-1-WorkspaceDefaultStorage_properties_typeProperties_url": {
+		"sqlscript1_properties_content_currentConnection_poolName": {
+			"type": "string"
+		},
+		"sqlscript3_properties_content_currentConnection_databaseName": {
+			"type": "string"
+		},
+		"sqlscript3_properties_content_currentConnection_poolName": {
+			"type": "string"
+		},
+		"test_sql_script_properties_content_currentConnection_databaseName": {
+			"type": "string"
+		},
+		"test_sql_script_properties_content_currentConnection_poolName": {
+			"type": "string"
+		},
+		"Notebook 1_properties_bigDataPool_referenceName": {
 			"type": "string",
-			"defaultValue": "https://dlsasynapselearningsuyog.dfs.core.windows.net"
+			"defaultValue": "pool1"
 		}
 	},
 	"variables": {
@@ -459,7 +480,7 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('dev01storage_properties_typeProperties_url')]",
+					"url": "https://synawspdev01.dfs.core.windows.net/",
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('dev01storage_accountKey')]"
@@ -483,7 +504,7 @@
 				"annotations": [],
 				"type": "HttpServer",
 				"typeProperties": {
-					"url": "[parameters('products_properties_typeProperties_url')]",
+					"url": "https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/01/adventureworks/products.csv",
 					"enableServerCertificateValidation": true,
 					"authenticationType": "Anonymous"
 				},
@@ -528,7 +549,7 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('synawsp-dev-1-WorkspaceDefaultStorage_properties_typeProperties_url')]"
+					"url": "https://dlsasynapselearningsuyog.dfs.core.windows.net"
 				},
 				"connectVia": {
 					"referenceName": "AutoResolveIntegrationRuntime",
@@ -546,14 +567,7 @@
 			"properties": {
 				"type": "Managed",
 				"typeProperties": {
-					"computeProperties": {
-						"location": "AutoResolve",
-						"dataFlowProperties": {
-							"computeType": "General",
-							"coreCount": 8,
-							"timeToLive": 0
-						}
-					}
+					"computeProperties": "[parameters('AutoResolveIntegrationRuntime_properties_typeProperties_computeProperties')]"
 				}
 			},
 			"dependsOn": []
@@ -579,8 +593,8 @@
 						"language": "sql"
 					},
 					"currentConnection": {
-						"databaseName": "master",
-						"poolName": "Built-in"
+						"databaseName": "[parameters('sqlscript1_properties_content_currentConnection_databaseName')]",
+						"poolName": "[parameters('sqlscript1_properties_content_currentConnection_poolName')]"
 					},
 					"resultLimit": 5000
 				},
@@ -599,8 +613,8 @@
 						"language": "sql"
 					},
 					"currentConnection": {
-						"databaseName": "master",
-						"poolName": "Built-in"
+						"databaseName": "[parameters('sqlscript3_properties_content_currentConnection_databaseName')]",
+						"poolName": "[parameters('sqlscript3_properties_content_currentConnection_poolName')]"
 					},
 					"resultLimit": 5000
 				},
@@ -619,8 +633,8 @@
 						"language": "sql"
 					},
 					"currentConnection": {
-						"databaseName": "master",
-						"poolName": "Built-in"
+						"databaseName": "[parameters('test_sql_script_properties_content_currentConnection_databaseName')]",
+						"poolName": "[parameters('test_sql_script_properties_content_currentConnection_poolName')]"
 					},
 					"resultLimit": 5000
 				},
@@ -710,7 +724,7 @@
 				"nbformat": 4,
 				"nbformat_minor": 2,
 				"bigDataPool": {
-					"referenceName": "pool1",
+					"referenceName": "[parameters('Notebook 1_properties_bigDataPool_referenceName')]",
 					"type": "BigDataPoolReference"
 				},
 				"sessionProperties": {
@@ -723,7 +737,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "e9477523-d5d4-44fb-898c-2b102061dbe3"
+						"spark.autotune.trackingId": "26565d16-43f9-4464-8c15-a86415007b21"
 					}
 				},
 				"metadata": {
@@ -758,7 +772,7 @@
 						"cell_type": "code",
 						"metadata": {},
 						"source": [
-							"#testing notebook"
+							"#testing notebook new"
 						],
 						"outputs": [],
 						"execution_count": null
