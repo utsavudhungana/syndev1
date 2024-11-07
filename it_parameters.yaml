@@ -3,7 +3,7 @@ Copy products_properties_0_typeProperties_sink:
         type: "DelimitedTextSink"
 				storeSettings: 
 					type: "AzureBlobFSWriteSettings"
-					copyBehavior: "MergeFiles"
+					copyBehavior: "FlattenHeirarchy"
 				formatSettings: 
 					type: "DelimitedTextWriteSettings"
 					quoteAllText: true
