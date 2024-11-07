@@ -16,6 +16,42 @@
 			"metadata": "Secure string for 'connectionString' of 'synawsp-dev-1-WorkspaceDefaultSqlServer'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synawsp-dev-1.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
+		"Copy products_properties_0_typeProperties_source": {
+			"type": "object"
+		},
+		"Copy products_properties_0_typeProperties_sink": {
+			"type": "object"
+		},
+		"Copy products_properties_0_typeProperties_enableStaging": {
+			"type": "bool"
+		},
+		"Copy products_properties_0_typeProperties_translator": {
+			"type": "object"
+		},
+		"Test_Pipeline1_properties_0_typeProperties_notebook": {
+			"type": "object"
+		},
+		"Test_Pipeline1_properties_0_typeProperties_snapshot": {
+			"type": "bool"
+		},
+		"Test_Pipeline1_properties_0_typeProperties_conf": {
+			"type": "object"
+		},
+		"Test_Pipeline1_properties_0_typeProperties_numExecutors": {
+			"type": "object"
+		},
+		"Test_Pipeline2_properties_0_typeProperties_source": {
+			"type": "object"
+		},
+		"Test_Pipeline2_properties_0_typeProperties_sink": {
+			"type": "object"
+		},
+		"Test_Pipeline2_properties_0_typeProperties_enableStaging": {
+			"type": "bool"
+		},
+		"Test_Pipeline2_properties_0_typeProperties_translator": {
+			"type": "object"
+		},
 		"AutoResolveIntegrationRuntime_properties_typeProperties_computeProperties": {
 			"type": "object",
 			"defaultValue": {
@@ -79,37 +115,10 @@
 							}
 						],
 						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "HttpReadSettings",
-									"requestMethod": "GET"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings",
-									"skipLineCount": 0
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
+							"source": "[parameters('Copy products_properties_0_typeProperties_source')]",
+							"sink": "[parameters('Copy products_properties_0_typeProperties_sink')]",
+							"enableStaging": "[parameters('Copy products_properties_0_typeProperties_enableStaging')]",
+							"translator": "[parameters('Copy products_properties_0_typeProperties_translator')]"
 						},
 						"inputs": [
 							{
@@ -157,22 +166,21 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebook": {
-								"referenceName": "Test_Notebook1",
-								"type": "NotebookReference"
-							},
-							"snapshot": true,
-							"conf": {
-								"spark.dynamicAllocation.enabled": null,
-								"spark.dynamicAllocation.minExecutors": null,
-								"spark.dynamicAllocation.maxExecutors": null
-							},
-							"numExecutors": null
+							"notebook": "[parameters('Test_Pipeline1_properties_0_typeProperties_notebook')]",
+							"snapshot": "[parameters('Test_Pipeline1_properties_0_typeProperties_snapshot')]",
+							"conf": "[parameters('Test_Pipeline1_properties_0_typeProperties_conf')]",
+							"numExecutors": "[parameters('Test_Pipeline1_properties_0_typeProperties_numExecutors')]"
 						}
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"xyz": {
+						"type": "string",
+						"defaultValue": "123"
+					}
 				},
 				"annotations": [],
 				"lastPublishTime": "2024-07-10T22:43:33Z"
@@ -200,36 +208,10 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "ParquetSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings",
-									"copyBehavior": "MergeFiles"
-								},
-								"formatSettings": {
-									"type": "ParquetWriteSettings"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
+							"source": "[parameters('Test_Pipeline2_properties_0_typeProperties_source')]",
+							"sink": "[parameters('Test_Pipeline2_properties_0_typeProperties_sink')]",
+							"enableStaging": "[parameters('Test_Pipeline2_properties_0_typeProperties_enableStaging')]",
+							"translator": "[parameters('Test_Pipeline2_properties_0_typeProperties_translator')]"
 						},
 						"inputs": [
 							{
@@ -737,7 +719,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "26565d16-43f9-4464-8c15-a86415007b21"
+						"spark.autotune.trackingId": "c98e4c53-6d45-486b-b731-a0e4edadd660"
 					}
 				},
 				"metadata": {
@@ -772,7 +754,7 @@
 						"cell_type": "code",
 						"metadata": {},
 						"source": [
-							"#testing notebook new"
+							"#testing notebook new test"
 						],
 						"outputs": [],
 						"execution_count": null

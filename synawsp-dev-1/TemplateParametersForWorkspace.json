@@ -11,6 +11,42 @@
 		"synawsp-dev-1-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synawsp-dev-1.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
+		"Copy products_properties_0_typeProperties_source": {
+			"value": ""
+		},
+		"Copy products_properties_0_typeProperties_sink": {
+			"value": ""
+		},
+		"Copy products_properties_0_typeProperties_enableStaging": {
+			"value": ""
+		},
+		"Copy products_properties_0_typeProperties_translator": {
+			"value": ""
+		},
+		"Test_Pipeline1_properties_0_typeProperties_notebook": {
+			"value": ""
+		},
+		"Test_Pipeline1_properties_0_typeProperties_snapshot": {
+			"value": ""
+		},
+		"Test_Pipeline1_properties_0_typeProperties_conf": {
+			"value": ""
+		},
+		"Test_Pipeline1_properties_0_typeProperties_numExecutors": {
+			"value": ""
+		},
+		"Test_Pipeline2_properties_0_typeProperties_source": {
+			"value": ""
+		},
+		"Test_Pipeline2_properties_0_typeProperties_sink": {
+			"value": ""
+		},
+		"Test_Pipeline2_properties_0_typeProperties_enableStaging": {
+			"value": ""
+		},
+		"Test_Pipeline2_properties_0_typeProperties_translator": {
+			"value": ""
+		},
 		"AutoResolveIntegrationRuntime_properties_typeProperties_computeProperties": {
 			"value": {
 				"location": "AutoResolve",
