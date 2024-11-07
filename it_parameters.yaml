@@ -1,1 +1,2 @@
 Notebook 1_properties_bigDataPool_referenceName: pool2
+Copy products_properties_0_typeProperties_sink.storeSettings.copyBehavior: "Flatten hierarchy"
